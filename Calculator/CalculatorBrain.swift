@@ -10,7 +10,7 @@ import Foundation
 
 class Calculator
 {
-    enum Op: Printable {
+    enum Op: CustomStringConvertible {
         case Operand(Double)
         case UnaryOperation(String, (Double) -> Double)
         case BinaryOperation(String, (Double, Double) -> Double)
@@ -58,7 +58,7 @@ class Calculator
     
     func evaluate() -> Double? {
         let (result, remainingOps) = evaluate(opStack)
-        println("opStack = \(opStack) result = \(result) remainder = \(remainingOps)")
+        print("opStack = \(opStack) result = \(result) remainder = \(remainingOps)")
         return result
     }
     
