@@ -10,7 +10,7 @@ import Foundation
 
 class Calculator
 {
-    enum Op: CustomStringConvertible {
+    private enum Op: CustomStringConvertible {
         case Operand(Double)
         case UnaryOperation(String, (Double) -> Double)
         case BinaryOperation(String, (Double, Double) -> Double)
@@ -29,9 +29,9 @@ class Calculator
         }
     }
     
-    var opStack = [Op]()
+    private var opStack = [Op]()
     
-    var knownOperation = [String: Op]()
+    private var knownOperation = [String: Op]()
     
     init() {
         func learnOp(op: Op) {
@@ -62,7 +62,7 @@ class Calculator
         return result
     }
     
-    func evaluate(ops: [Op]) -> (result: Double?, remainingOps: [Op]) {
+    private func evaluate(ops: [Op]) -> (result: Double?, remainingOps: [Op]) {
         if !ops.isEmpty {
             var remainingOps = ops
             let op = remainingOps.removeLast()
